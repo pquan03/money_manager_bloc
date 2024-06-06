@@ -8,11 +8,11 @@ import 'package:money_manager/repositories/log.dart';
 
 class ApiImpl implements Api {
   Log log;
-   List<Transaction> _data = [
-    Transaction(dateTime: "2024-02-15 15:00:00", title: "a", content: "aa", amount: 1000),
-    Transaction(dateTime: "2024-03-10 10:00:00", title: "b", content: "bb", amount: -10),
-    Transaction(dateTime: "2024-03-10 12:00:00", title: "c", content: "cc", amount: -20),
-    Transaction(dateTime: "2024-03-10 9:00:00", title: "d", content: "dd", amount: -50),
+   final List<Transaction> _data = [
+    const Transaction(dateTime: "2024-02-15 15:00:00", title: "a", content: "aa", amount: 1000),
+    const Transaction(dateTime: "2024-03-10 10:00:00", title: "b", content: "bb", amount: -10),
+    const Transaction(dateTime: "2024-03-10 12:00:00", title: "c", content: "cc", amount: -20),
+    const Transaction(dateTime: "2024-03-10 9:00:00", title: "d", content: "dd", amount: -50),
   ];
 
   ApiImpl(this.log) {
@@ -87,6 +87,18 @@ class ApiImpl implements Api {
     }
     return total;
   }
+
+  @override
+  Future<double> getTotalByMonth(String moth) async {
+    await delay();
+    double total = 0;
+    for(final obj in _data) {
+      if(obj.dateTime.startsWith(moth)) total += obj.amount;
+    }
+    return total;
+  }
+
+
 
   @override
   Future<List<Transaction>> getTransaction(String month) async {

@@ -14,6 +14,8 @@ class Transaction {
     required this.amount,
   });
 
+  const Transaction.empty() : dateTime = '', title = '', content = '', amount = 0.0;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

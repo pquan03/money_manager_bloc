@@ -1,12 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:money_manager/common/load_status.dart';
 import 'package:money_manager/models/login.dart';
 import 'package:money_manager/repositories/api.dart';
 import 'package:money_manager/widgets/common_widgets/noti_bar.dart';
-import 'package:money_manager/widgets/screens/list_item/list_item_screen.dart';
+import 'package:money_manager/widgets/main_app.dart';
 import 'package:money_manager/widgets/screens/login/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -49,7 +47,7 @@ class Page extends StatelessWidget {
               if(state.loadStatus == LoadStatus.Error) {
                 ScaffoldMessenger.of(context).showSnackBar(notiBar('Login Error', true));
               } else if(state.loadStatus == LoadStatus.Done) {
-                Navigator.of(context).pushReplacementNamed(ListItemScreen.routeName, );
+                Navigator.of(context).pushReplacementNamed(MainApp.routeName, );
               }
             },
             builder: (context, state) {

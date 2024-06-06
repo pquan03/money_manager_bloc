@@ -4,6 +4,7 @@ import '../models/transaction.dart';
 abstract class Api {
   Future<bool> checkLogin(Login login);
   Future<double> getTotal();
+  Future<double> getTotalByMonth(String month);
   Future<List<String>> getMonths();
   Future<List<Transaction>> getTransaction(String month);
   Future<void> addTransaction(Transaction transaction);
